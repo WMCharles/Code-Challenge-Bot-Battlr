@@ -21,6 +21,14 @@ function BotsPage() {
     const updatedCollection = bot.filter((item) => item.id !== deletedBot.id)
     setBot(updatedCollection)
   }
+  
+  // Add Bot to Army
+  function addBot(soldier){
+    const filteredArmy = army.filter((item) => item.id !== soldier.id)
+    const newArmy = [...filteredArmy, soldier]
+    setArmy(newArmy)
+  }
+
   console.log(bot)
   
   return (
