@@ -16,12 +16,17 @@ function BotsPage() {
     .then((data) => setBot(data))
   }, [])
 
+  // deleteBot
+  function deleteBot(deletedBot){
+    const updatedCollection = bot.filter((item) => item.id !== deletedBot.id)
+    setBot(updatedCollection)
+  }
   console.log(bot)
   
   return (
     <div>
       <YourBotArmy />
-      <BotCollection data={bot}/>
+      <BotCollection data={bot} deleteBot={deleteBot}/>
     </div>
   )
 }
