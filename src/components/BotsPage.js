@@ -46,13 +46,11 @@ function BotsPage() {
     const newArmy = army.filter((soldier) => soldier.id !== item.id)
     setArmy(newArmy)
   }
-  
-  console.log(bot)
-  
+
   return (
     <div>
       <YourBotArmy army={army} deleteBot={deleteBot} releaseFromArmy={releaseFromArmy}/>
-      <BotCollection data={bot} addBot={addBot}/>
+      <BotCollection data={bot} addBot={addBot} deleteBot={deleteBot}/>
     </div>
   )
 }
