@@ -29,6 +29,12 @@ function BotsPage() {
     setArmy(newArmy)
   }
 
+  // release army from army
+  function releaseFromArmy(item){
+    const newArmy = army.filter((soldier) => soldier.id !== item.id)
+    setArmy(newArmy)
+  }
+  
   console.log(bot)
   
   return (
