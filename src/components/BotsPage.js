@@ -21,6 +21,17 @@ function BotsPage() {
   function deleteBot(deletedBot){
     const updatedCollection = bot.filter((item) => item.id !== deletedBot.id)
     setBot(updatedCollection)
+
+    const newArmy = army.filter((soldier) => soldier.id !== deletedBot.id)
+    setArmy(newArmy)
+
+    fetch(`http://localhost:8002/bots/${deletedBot.id}`, {
+      method: "DELETE",
+      headers: {
+        "content-type":"application/json"
+      }
+    })
+    .then(res => res.json())
   }
   
   // Add Bot to Army
