@@ -9,8 +9,12 @@ const botTypeClasses = {
   Captain: "icon star",
 };
 
+function BotCard({ bot, handleClick, deleteBot }) {
 
-function BotCard({ bot, handleClick }) {
+  function handleDischarge(e){
+    e.stopPropagation()
+    deleteBot(bot)
+  }
   return (
     <div className="ui column">
       <div
@@ -48,7 +52,7 @@ function BotCard({ bot, handleClick }) {
             <div className="ui center aligned segment basic">
               <button
                 className="ui mini red button"
-                onClick={() => console.log("X clicked!!")}
+                onClick={handleDischarge}
               >
                 x
               </button>
