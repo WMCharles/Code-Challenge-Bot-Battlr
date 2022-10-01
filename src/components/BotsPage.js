@@ -6,8 +6,9 @@ function BotsPage() {
   //start here with your code for step one
 
 
-  // Bot state
+  // Bot states
   const [bot, setBot] = useState([])
+  const [army, setArmy] = useState([])
 
   //Fetch Data
   useEffect(() => {
@@ -16,7 +17,7 @@ function BotsPage() {
     .then((data) => setBot(data))
   }, [])
 
-  // deleteBot
+  // deleteBot completely
   function deleteBot(deletedBot){
     const updatedCollection = bot.filter((item) => item.id !== deletedBot.id)
     setBot(updatedCollection)
