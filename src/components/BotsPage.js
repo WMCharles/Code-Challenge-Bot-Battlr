@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import YourBotArmy from "./YourBotArmy";
 import BotCollection from "./BotCollection";
+import BotSpecs from "./BotSpecs";
 
 function BotsPage() {
   //start here with your code for step one
@@ -21,6 +22,7 @@ function BotsPage() {
     .then((data) => setBot(data))
   }, [])
 
+  
   // deleteBot completely
   function deleteBot(deletedBot){
     const updatedCollection = bot.filter((item) => item.id !== deletedBot.id)
