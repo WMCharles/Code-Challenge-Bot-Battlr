@@ -1,13 +1,13 @@
 import React from "react";
 import BotCard from "./BotCard";
 
-function BotCollection({data, addBot, deleteBot}) {
+function BotCollection({data, displayBotSpecs, deleteBot}) {
   // Your code here
 
   // Add bot to army
   function handleClick(item){
     console.log(item)
-    addBot(item)
+    displayBotSpecs(item)
   }
 
   return (
