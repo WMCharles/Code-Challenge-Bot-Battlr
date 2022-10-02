@@ -42,7 +42,9 @@ function BotsPage() {
   function addBot(soldier){
     const filteredArmy = army.filter((item) => item.id !== soldier.id)
     const newArmy = [...filteredArmy, soldier]
+
     setArmy(newArmy)
+    setCollectionVisible(true)
   }
 
   // release army from army
