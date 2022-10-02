@@ -51,6 +51,7 @@ function BotsPage() {
     const filteredArmy = army.filter((item) => item.id !== soldier.id)
     const newArmy = [...filteredArmy, soldier]
 
+    // Remove bot from army when enlisted to army
     const newFilter = filtered.filter((item) => item.id !== soldier.id)
     setFiltered(newFilter)
 
@@ -63,6 +64,7 @@ function BotsPage() {
     const newArmy = army.filter((soldier) => soldier.id !== item.id)
     setArmy(newArmy)
 
+    // Return bot to collection when released from army
     const newGroup = newArmy.map(bot => bot)
     const newCollection = bot.filter(bot => {
       return !newGroup.includes(bot)
