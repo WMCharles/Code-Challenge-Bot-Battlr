@@ -15,11 +15,17 @@ function BotsPage() {
   const [collectionVisible, setCollectionVisible] = useState(true)
   const [botSpecs, setBotSpecs] = useState([])
 
+  // Filtered BotCollection
+  const [filtered, setFiltered] = useState([])
+
   //Fetch Data
   useEffect(() => {
     fetch("http://localhost:8002/bots")
     .then((res) => res.json())
-    .then((data) => setBot(data))
+    .then((data) => {
+      setBot(data)
+      setFiltered(data)
+    })
   }, [])
 
   
@@ -45,6 +51,9 @@ function BotsPage() {
     const filteredArmy = army.filter((item) => item.id !== soldier.id)
     const newArmy = [...filteredArmy, soldier]
 
+    const newFilter = filtered.filter((item) => item.id !== soldier.id)
+    setFiltered(newFilter)
+
     setArmy(newArmy)
     setCollectionVisible(true)
   }
@@ -53,6 +62,12 @@ function BotsPage() {
   function releaseFromArmy(item){
     const newArmy = army.filter((soldier) => soldier.id !== item.id)
     setArmy(newArmy)
+
+    const newGroup = newArmy.map(bot => bot)
+    const newCollection = bot.filter(bot => {
+      return !newGroup.includes(bot)
+    })
+    setFiltered(newCollection)
   }
 
   // Display Single Bot (sbot) Specs
@@ -70,7 +85,7 @@ function BotsPage() {
   return (
     <div>
       <YourBotArmy army={army} deleteBot={deleteBot} releaseFromArmy={releaseFromArmy}/>
-      {collectionVisible ? <BotCollection data={bot} displayBotSpecs={displayBotSpecs} deleteBot={deleteBot}/> : <BotSpecs bot={botSpecs} enlist={addBot} back={displayBotCollection}/>}
+      {collectionVisible ? <BotCollection data={filtered} displayBotSpecs={displayBotSpecs} deleteBot={deleteBot}/> : <BotSpecs bot={botSpecs} enlist={addBot} back={displayBotCollection}/>}
     </div>
   )
 }
