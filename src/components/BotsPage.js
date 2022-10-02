@@ -9,6 +9,10 @@ function BotsPage() {
   // Bot states
   const [bot, setBot] = useState([])
   const [army, setArmy] = useState([])
+  
+  // collection visible
+  const [collectionVisible, setCollectionVisible] = useState(true)
+  const [botSpecs, setBotSpecs] = useState([])
 
   //Fetch Data
   useEffect(() => {
