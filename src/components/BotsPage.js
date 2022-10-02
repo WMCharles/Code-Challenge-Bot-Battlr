@@ -51,6 +51,18 @@ function BotsPage() {
     setArmy(newArmy)
   }
 
+  // Display Single Bot (sbot) Specs
+  function displayBotSpecs(sbot){
+    setCollectionVisible(false)
+    setBotSpecs(sbot)
+  }
+
+  // Displaying all other bots - Go back button
+  function displayBotCollection(){
+    setCollectionVisible(true)
+  }
+
+
   return (
     <div>
       <YourBotArmy army={army} deleteBot={deleteBot} releaseFromArmy={releaseFromArmy}/>
